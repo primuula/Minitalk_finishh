@@ -6,7 +6,7 @@
 /*   By: safamran <safamran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 18:10:18 by safamran          #+#    #+#             */
-/*   Updated: 2025/03/21 18:32:19 by safamran         ###   ########.fr       */
+/*   Updated: 2025/03/25 13:30:34 by safamran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ typedef struct s_build
 {
 	unsigned char	octet;
 	int				col;
-	unsigned char	buffer[100000];
+	unsigned char	buffer[100000000];
 	int				buffer_index;
 	int				client_pid;
 }					t_build;
@@ -34,7 +34,7 @@ void	sigaction_handler(int signal, siginfo_t *info, void *context)
 	g_lettre.col++;
 	if (g_lettre.col == 8)
 	{
-		if (g_lettre.buffer_index < 99999)
+		if (g_lettre.buffer_index < 999999999)
 		{
 			g_lettre.buffer[g_lettre.buffer_index++] = g_lettre.octet;
 			if (g_lettre.octet == '\n' || g_lettre.octet == '\0')

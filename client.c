@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: safamran <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: safamran <safamran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 18:10:07 by safamran          #+#    #+#             */
-/*   Updated: 2025/03/21 18:54:17 by safamran         ###   ########.fr       */
+/*   Updated: 2025/03/25 14:26:44 by safamran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int	g_ack = 0;
+static volatile sig_atomic_t	g_ack = 0;
 
 void	pause_after_recieve(int signal)
 {
@@ -35,7 +35,7 @@ void	push_char(char c, int pid)
 		else
 			kill(pid, SIGUSR2);
 		col--;
-		while (g_ack == 0)
+		while (g_ack == 0 && !(kill(pid, SIGURG) == -1))
 		{
 		}
 	}
@@ -44,7 +44,7 @@ void	push_char(char c, int pid)
 int	handle_error(void)
 {
 	ft_putstr("Argument Error\n");
-	return (1);
+	exit(1);
 }
 
 int	main(int argc, char *argv[])
