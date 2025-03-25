@@ -6,13 +6,13 @@
 /*   By: safamran <safamran@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 18:10:07 by safamran          #+#    #+#             */
-/*   Updated: 2025/03/25 14:26:44 by safamran         ###   ########.fr       */
+/*   Updated: 2025/03/25 16:18:33 by safamran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static volatile sig_atomic_t	g_ack = 0;
+int		g_ack = 0;
 
 void	pause_after_recieve(int signal)
 {

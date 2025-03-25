@@ -2,7 +2,7 @@ NAME_SERVER	= server
 NAME_CLIENT	= client 
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
-SRCS		= server.c client.c utils.c
+SRCS		= server.c client.c utils.c utilsbig.c 
 INC			= minitalk.h
 OBJ			= $(SRCS:.c=.o)
 
